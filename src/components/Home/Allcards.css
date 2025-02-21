@@ -1,0 +1,15 @@
+.zoom-effect {
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .zoom-effect:hover {
+    transform: scale(1.1);
+  }
+  
+
+
+  .mobile-heading {
+    font-weight: bold;
+  }

@@ -1,0 +1,43 @@
+
+
+
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  /* Underline Animation  */
+  .nav-link {
+    font-size: 1.1rem;
+    position: relative;
+    text-decoration: none;
+    padding-bottom: 5px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff; 
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  
+  .badge {
+    font-size: 0.8rem;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+  }
+  
