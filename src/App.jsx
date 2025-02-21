@@ -53,7 +53,7 @@ function App() {
 
       {/* routes the links */}
       <Routes>
-        <Route path="/*" element={<NotFound/>} />
+        <Route path="*" element={<NotFound/>} />
         <Route path="/" element={<Home/>} >  </Route>
         <Route path="/home" element={ <Home/> } ></Route>
         <Route path="/mobiles" element={<Mobiles/>} />
