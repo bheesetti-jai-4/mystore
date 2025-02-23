@@ -1,4 +1,4 @@
-import "../Allcssfiles/NavBar.css";
+import "../Allcssfiles/NavBar.css"
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faCartShopping, faUser, faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -7,19 +7,16 @@ import { logout } from "../Store/AllStore";
 import { useState } from "react";
 
 function NavBar() {
-  // State for search input
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // Fetch all products from Redux store
   const allProducts = useSelector((state) => state.products);
   const cartData = useSelector((state) => state.cart);
   
   const totalCart = cartData.reduce((sum, item) => sum + (item.quantity || 0), 0);
   const isAuthenticated = useSelector((state) => state.auth.isauthenicate);
 
-  // Ensure categories are arrays before spreading them
   const allItems = [
     ...(Array.isArray(allProducts.mobiles) ? allProducts.mobiles : []),
     ...(Array.isArray(allProducts.mensfashion) ? allProducts.mensfashion : []),
@@ -30,7 +27,6 @@ function NavBar() {
     ...(Array.isArray(allProducts.tops) ? allProducts.tops : []),
   ];
 
-  // Filter products based on search input
   const filterProducts = allItems.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -38,24 +34,17 @@ function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
       <div className="container-fluid">
-        {/* Brand Logo */}
         <a className="navbar-brand fw-bold text-light" onClick={() => navigate("/home")} style={{ cursor: "pointer" }}>
           MyStore
         </a>
 
-        {/* <a className="navbar-brand fw-bold text-light" onClick={() => navigate("/home")} style={{ cursor: "pointer" }}>
-          portfolio
-        </a> */}
-
-        {/* Navbar Toggler for Mobile */}
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        {/* Mobile Toggle Button - Fixing the Button Issue */}
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Navbar Links & Search */}
+        {/* Navigation Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          
-          {/* Search Box */}
           <div className="search-container position-relative w-50 mx-auto">
             <form className="d-flex">
               <input
@@ -71,7 +60,6 @@ function NavBar() {
               </button>
             </form>
 
-            {/* Search Results - Positioned Below Input */}
             {search && (
               <div className="search-results position-absolute bg-white w-100 p-2 rounded shadow mt-1">
                 {filterProducts.length > 0 ? (

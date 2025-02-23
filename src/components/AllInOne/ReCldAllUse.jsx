@@ -1,11 +1,20 @@
 /* eslint-disable react/prop-types */
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
 import { addtocart } from "../../Store/AllStore";
+import { useState } from "react";
 
 function ReCldAllUse({ title, details }) {
    const dispatch =  useDispatch()
 
+   const [show,setshow] = useState(false)
+  const handlebutton = (item)=>{
+    dispatch(addtocart(item))
+    setshow(true);
+    setTimeout(() => {
+      setshow(false)
+    }, 1500);
+  }
    
 
   return (
@@ -25,12 +34,10 @@ function ReCldAllUse({ title, details }) {
             <div className="card-body text-center">
               <h5 className="card-title">{item.name}</h5>
               <p className="card-text">{item.description}</p>
-              <h4 className="text-primary">₹{item.price}</h4>
+              <h4 className="text-danger">₹{item.price}</h4>
               <button
-                className="btn btn-primary mt-2"
-                onClick={() =>{ dispatch(addtocart(item)) 
-                  // ,  alert("added product ")
-                }}
+                className="btn btn-primary mt-2 "
+                onClick={() =>{handlebutton(item)}}
               >
                 ADD TO CART
               </button>
@@ -39,6 +46,17 @@ function ReCldAllUse({ title, details }) {
         </div>
       ))}
     </div>
+
+      {
+        show && (
+          <div 
+          className="position-fixed top-50 start-50 translate-middle p-3 bg-success text-white rounded shadow"
+          style={{ zIndex: 1050 }} >
+              Added To Cart!
+          </div>
+        )
+      }
+
   </div>
   
   );

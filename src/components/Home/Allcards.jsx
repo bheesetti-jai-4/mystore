@@ -20,7 +20,7 @@ function Allcards( {title ,link , details} ) {
                              src={item.image}
                              alt="Mobiles"
                             className="card-img-top zoom-effect"
-                             style={{ width: "180px",height: "200px" , cursor: "pointer" }}
+                             style={{ width: "150px",height: "180px" , cursor: "pointer" }}
                           />
                          <h5 className="  text-dark mt-3">{item.name}</h5>
                          </div>
